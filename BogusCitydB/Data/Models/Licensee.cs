@@ -14,15 +14,12 @@ public class Licensee : CEUser
     [StringLength(7, MinimumLength = 1, ErrorMessage = "License must be between 1 and 7 numbers long.")] //adds attribute to restrict licenseNumber property to range of 1-5 chars
     [Display(Name = "License Number")]
     public string? LicenseNumber { get; set; }
+      public string? ShopId { get; set; } = null;
 
     [Display(Name = "Employer Tracking Permission")]
-
-    public bool EmployerAccessPermission { get; set; } = false;
-
-    [Display(Name = "Employer Id Number")]
-
-    public string? EmployerId { get; set; } = null;
-
+    public bool ShopAccessPermission { get; set; } = false;
+    public bool EmploymentChange { get; set; } = false;
+    
     [DisplayFormat(DataFormatString = "{0:yyyy}")]
     [Display(Name = "Year License Attained")]
     public DateOnly YearLicenseAttained { get; set; }
@@ -38,6 +35,25 @@ public class Licensee : CEUser
     [Required]
     [Display(Name = "License Status")]
     public LicenseStatus LicenseStatus { get; set; }
+    [Display(Name = "Employment Status")]
+    public EmploymentStatus EmploymentStatus { get; set; }
+
+    //allows for lazy loading
+    //establishes a navigation property
+    public virtual Shop? Shop { get; set; }
+
+    /*example of lazy loading in JPA(Java Persistence API):
+     *@Entity
+        public class Licensee { 
+            @Id
+            @GeneratedValue(strategy = GenerationType.IDENTITY)
+            private Long id;
+            private String name;
+
+            @ManyToOne(fetch = FetchType.LAZY)
+            private Shop shop; 
+        } 
+     */
 
     public List<LicenseStatus> LicenseStatusList { get; set; } = new()
     {
@@ -63,5 +79,12 @@ public class Licensee : CEUser
         LicenseType.SewerLayer,
         LicenseType.WaterConditioner,
         LicenseType.LawnSprinklers
+    };
+    public List<EmploymentStatus>? EmploymentStatusList { get; } = new()
+    {
+        EmploymentStatus.Employed,
+        EmploymentStatus.Unemployed,
+        EmploymentStatus.ShopOwner,
+        EmploymentStatus.Retired
     };
 }
