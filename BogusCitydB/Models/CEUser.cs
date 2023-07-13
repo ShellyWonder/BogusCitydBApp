@@ -23,20 +23,7 @@ namespace BogusCitydB.Data.Models
         [Display(Name = "Full Name")]
         public string? FullName { get { return $"{FirstName} {LastName}"; } }
 
-        
-        [Display(Name = "Street Address")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "The {0} must be at least {2} at most {1} characters long."),]
-        public string? StreetAddress { get; set; } = null;
-
-        [StringLength(20, MinimumLength = 1, ErrorMessage = "The {0} must be at least {2} at most {1} characters long.")]
-        public string? City { get; set; } = null;
-
-        public State State { get; set; }
-
-        [RegularExpression(@"^\d{5}(?:\d{4})?$", ErrorMessage = "Zip Code should be in 5 or 9 number format. Please try again.")]
-        [Display(Name = "Zip Code")]
-        public string? ZipCode { get; set; }
-
+       
         [Display(Name= "Date Last Modified")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? LastModified { get; set; } = null;
