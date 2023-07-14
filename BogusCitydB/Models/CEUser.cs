@@ -23,13 +23,16 @@ namespace BogusCitydB.Data.Models
         [Display(Name = "Full Name")]
         public string? FullName { get { return $"{FirstName} {LastName}"; } }
 
-       
         [Display(Name= "Date Last Modified")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime? LastModified { get; set; } = null;
+        public DateTimeOffset? DateModified { get; set; } = null;
+
+        [Display(Name = "Date Created")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTimeOffset? DateCreated { get; set; } = null;
 
         [Required]
-        [EmailAddress(ErrorMessage = "Please enter a properly formated email. Example: example@yourcompany.com.")]
+        [EmailAddress(ErrorMessage = "Please enter a properly formatted email. Example: example@yourcompany.com.")]
         [Display(Name = "Email Address")]
         public string? EmailAddress { get; set; }
 
