@@ -31,7 +31,7 @@ namespace BogusCitydB.Models
         [Required]
         public int NotificationTypeId { get; set; }
 
-        public virtual CEUNotificationType? NotificationType { get; set; }
+        public virtual ECEUNotificationType? NotificationType { get; set; }
 
         public virtual CEUser? Sender { get; set; }
         public virtual CEUser? Recipient { get; set; }
