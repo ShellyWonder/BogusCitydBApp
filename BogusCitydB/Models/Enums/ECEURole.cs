@@ -1,6 +1,6 @@
 ﻿namespace BogusCitydB.Models.Enums
 {
-    public enum CEURole
+    public enum ECEURole
     {
         Admin,
         Provider,

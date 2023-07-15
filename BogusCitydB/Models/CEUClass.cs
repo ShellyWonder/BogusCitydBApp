@@ -36,7 +36,7 @@ namespace BogusCitydB.Data.Models
         public int CEUHoursAssigned { get; set; }
 
         [Display(Name = "Board Approval Status")]
-        public ECEUClassBoardApprovalStatus BoardApprovalStatus { get; set; }
+        public ECEUClassBoardAction BoardApprovalStatus { get; set; }
         public ECEUClassStatus ApprovalStatus { get; set; }
 
         [Required]
