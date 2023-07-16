@@ -14,8 +14,8 @@ public enum EExemptStatus
     Retired,
     [Display(Name = "Board Dispensation")]
     BoardDispensation,
-    [Display(Name = "Passed Master's Exam")]
-    PassedMastersExam,
+    [Display(Name = "Passed License Exam")]
+    PassedLicenseExam,
     [Display(Name = "Non-Exempt")]
     NonExempt,
     [Display(Name = "Other")]
