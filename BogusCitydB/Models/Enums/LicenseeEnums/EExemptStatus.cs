@@ -18,6 +18,8 @@ public enum EExemptStatus
     PassedLicenseExam,
     [Display(Name = "Non-Exempt")]
     NonExempt,
+    [Display(Name = "Board Member")]
+    BoardMember, 
     [Display(Name = "Other")]
     Other
 }

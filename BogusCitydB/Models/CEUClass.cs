@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using BogusCitydB.Models.Enums.CEUClassEnums;
+using BogusCitydB.Models;
+using System.Security.Cryptography.Xml;
 
 namespace BogusCitydB.Data.Models
 {
@@ -37,11 +39,13 @@ namespace BogusCitydB.Data.Models
 
         [Display(Name = "Board Approval Status")]
         public ECEUClassBoardAction BoardApprovalStatus { get; set; }
+
+        //Approval from Board Secretary after submission of completed class
         public ECEUClassStatus ApprovalStatus { get; set; }
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:MM dd yyyy}")]
-        public DateOnly Date { get; set; }
+        public DateTimeOffset Date { get; set; }
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:hh:mm tt}")]
@@ -57,9 +61,19 @@ namespace BogusCitydB.Data.Models
         public string? LocationAddress { get; set; }
 
         [Display(Name = "Registration Method")]
-        public ERegistrationProcedure RegistrationProcedure { get; set; }
+        public RegistrationProcedure? RegistrationProcedure { get; set; }
+
+        [Display(Name = "Additional Information")]
+        public string? Comment { get; set; }
 
         public virtual Provider? Provider { get; set; }
-        public virtual ICollection<Licensee>? LicenseesByCEUClass { get; set; }
+        public virtual ICollection<Licensee>? LicenseesByCEUClass { get; set; } = new HashSet<Licensee>();
+        public virtual ICollection<CEUClassAttachment>? Attachments { get; set; } = new HashSet<CEUClassAttachment>();
+
+        public virtual ICollection<CEUClassStatus>? ClassStatus { get; set; } = new HashSet<CEUClassStatus>(); 
+
+        public virtual ICollection<CEUClassBoardAction>? BoardActions { get; set; } = new HashSet<CEUClassBoardAction>();
+
+        public virtual ICollection<Comment>? Comments { get; set; } = new HashSet<Comment>();
     }
 }
