@@ -17,8 +17,8 @@ namespace BogusCitydB.Data.Models
         public int ShopLicenseNumber { get; set; }
 
         //sets up the relationship between the shop and the licensees
-        public virtual ICollection<Licensee>? ShopLicensees { get; set; }
-        public virtual ICollection<Licensee>? ShopLicenseesByType { get; set; }
+        public virtual ICollection<LicenseeUser>? ShopLicensees { get; set; }
+        public virtual ICollection<LicenseeUser>? ShopLicenseesByType { get; set; }
 
         /*example of lazy loading in JPA(Java Persistence API):
     *@Entity

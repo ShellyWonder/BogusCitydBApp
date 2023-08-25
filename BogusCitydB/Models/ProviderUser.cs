@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BogusCitydB.Data.Models
 {
-    public class Provider : CEUser 
+    public partial class ProviderUser : CEUser
     {
         
         [StringLength(50, MinimumLength = 1, ErrorMessage = "Business name must be between 1 and 50 characters long.")]
@@ -14,14 +14,17 @@ namespace BogusCitydB.Data.Models
         public string? Website { get; set; }
 
         public bool IsActive { get; set; } = true;
-
+ 
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTimeOffset BoardCertificationRenewalDate { get; set; }
+        [Display(Name = "Date of Board Certification")]
+        //initial date of board certification; used to determine when to renew
+        public DateTimeOffset DateOfBoardCertification { get; set; }
+        public int InterimRenewalPeriod { get; set; } = 0;
 
        
         
         public virtual ICollection<CEUClass>? AllClassesByProvider { get; set; } = new HashSet<CEUClass>();
-        public virtual ICollection<Licensee>? LicenseesByProvider { get; set;} = new HashSet<Licensee>();
+        public virtual ICollection<LicenseeUser>? LicenseesByProvider { get; set;} = new HashSet<LicenseeUser>();
         public virtual ICollection<CEUClass>? ClassesByLicenseType { get; set; } = new HashSet<CEUClass>();
     }
 

@@ -34,6 +34,10 @@ namespace BogusCitydB.Data.Models
         public string? Description { get; set; }
 
         [Required]
+        [Display(Name = "License Category")]
+        public string? LicenseType { get; set; }
+
+        [Required]
         [Display(Name = "Hours of Credit")]
         public int CEUHoursAssigned { get; set; }
 
@@ -66,8 +70,8 @@ namespace BogusCitydB.Data.Models
         [Display(Name = "Additional Information")]
         public string? Comment { get; set; }
 
-        public virtual Provider? Provider { get; set; }
-        public virtual ICollection<Licensee>? LicenseesByCEUClass { get; set; } = new HashSet<Licensee>();
+        public virtual ProviderUser? Provider { get; set; }
+        public virtual ICollection<LicenseeUser>? LicenseesByCEUClass { get; set; } = new HashSet<LicenseeUser>();
         public virtual ICollection<CEUClassAttachment>? Attachments { get; set; } = new HashSet<CEUClassAttachment>();
 
         public virtual ICollection<CEUClassStatus>? ClassStatus { get; set; } = new HashSet<CEUClassStatus>(); 

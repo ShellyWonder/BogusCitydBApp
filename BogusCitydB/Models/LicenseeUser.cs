@@ -5,7 +5,7 @@ using BogusCitydB.Models.Enums.LicenseeEnums;
 
 namespace BogusCitydB.Data.Models;
 
-public class Licensee : CEUser
+public partial class LicenseeUser : CEUser
 {
     [Key]
     
@@ -44,7 +44,7 @@ public class Licensee : CEUser
     //allows for lazy loading
     //establishes a navigation property
     public virtual Shop? Shop { get; set; }
-    public virtual Provider? Provider { get; set; }
+    public virtual ProviderUser? Provider { get; set; }
     public virtual CEUClass? CEUClasses { get; set; }
     
 

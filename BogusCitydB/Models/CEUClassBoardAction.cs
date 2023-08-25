@@ -7,15 +7,19 @@ namespace BogusCitydB.Models
     {
         public int Id { get; set; }
 
+        //foreign key
+        public int CEUClassId { get; set; }
+        public int ECEUClassBoardActionId { get; set; }
+
         [Required]
         [Display(Name = "Class Approval Status")]
-        public string? Status { get; set; }
+        public string? ApprovalStatus { get; set; }
 
         [Required]
         [Display(Name = "Date Submitted for Approval")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
 
-        public DateTimeOffset DateSubmitted { get; set; }
+        public DateTimeOffset DateSubmitted { get; set; } 
 
         [Required]
         [Display(Name = "Scheduled To be Considered ")]
